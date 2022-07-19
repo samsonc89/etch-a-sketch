@@ -4,15 +4,32 @@
 body {
   margin: 0 80px;
 }
+
+p {
+  margin: 0;
+}
 .grid-container {
   width: 400px;
   height: 400px;
   background-color: aqua;
   margin: 50px auto;
+  display: flex;
+  flex-wrap: wrap;
+  border: 2px solid black;
 }
-
+.grid {
+  box-sizing: border-box;
+  border: 1px solid black;
+}
 .button-area {
   display: flex;
   justify-content: space-around;
   margin: 20px auto;
+}
+
+#grid-size {
+  width: 30px;
+  height: 30px;
+  border: 1px solid black;
+  line-height: 30px;
 }
