@@ -1,0 +1,18 @@
+* {
+  text-align: center;
+}
+body {
+  margin: 0 80px;
+}
+.grid-container {
+  width: 400px;
+  height: 400px;
+  background-color: aqua;
+  margin: 50px auto;
+}
+
+.button-area {
+  display: flex;
+  justify-content: space-around;
+  margin: 20px auto;
+}
