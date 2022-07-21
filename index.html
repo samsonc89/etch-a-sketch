@@ -8,9 +8,6 @@
   </head>
   <body>
     <h1>Etch a Sketch</h1>
-    <div class="grid-area">
-      <div class="grid-container"></div>
-    </div>
     <div class="button-area">
       <div class="color">
         <div id="color-display"></div>
@@ -18,10 +15,13 @@
       </div>
       <button id="rainbow-picker">Rainbow</button>
       <div class="size-slider">
-        <div id="grid-size"><p>4</p></div>
-        <div id="slider"></div>
+        <button id="resize">Resize</button>
       </div>
       <button id="reset">Reset</button>
+    </div>
+    <h3 id="grid-size">10 x 10</h3>
+    <div class="grid-area">
+      <div class="grid-container"></div>
     </div>
   </body>
 </html>
