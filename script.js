@@ -25,7 +25,7 @@ const addSquares = function () {
   const squares = document.querySelectorAll(".grid");
   squares.forEach((square) =>
     square.addEventListener("mouseenter", () => {
-      console.log("hello");
+      square.style.backgroundColor = "black";
     })
   );
 };
