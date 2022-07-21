@@ -18,7 +18,7 @@ let rows = 10;
 
 const gridSize = function () {
   gridRules.style.cssText = `box-sizing: border-box;
-  border: 1px solid black; width: calc(100% / ${rows}); height: calc(100% / ${rows});`;
+    border: 1px solid black; width: calc(100% / ${rows}); height: calc(100% / ${rows});`;
 };
 
 const addSquares = function () {
@@ -31,10 +31,11 @@ const addSquares = function () {
 };
 
 const createDiv = function () {
-  let squares = rows * rows;
+  let square = rows * rows;
 
   gridSize();
-  for (let i = 0; i < squares; i++) {
+
+  for (let i = 0; i < square; i++) {
     const div = document.createElement("div");
     div.classList = "grid";
     gridContainer.appendChild(div);
@@ -42,4 +43,12 @@ const createDiv = function () {
   addSquares();
 };
 
-document.querySelector("#reset").addEventListener("click", createDiv);
+const clearGrid = function () {
+  const squares = document.querySelectorAll(".grid");
+  squares.forEach((square) => {
+    square.style.backgroundColor = "";
+  });
+};
+createDiv();
+
+document.querySelector("#reset").addEventListener("click", clearGrid);
