@@ -12,17 +12,23 @@ css grid width/height calculation is then changed to a
 
 */
 const gridContainer = document.querySelector(".grid-container");
-
-// const styleSheet = document.querySelector("#stylesheet");
 const gridRules = document.styleSheets[0].cssRules[4];
+
+let rows = 10;
 
 const gridSize = function () {
   gridRules.style.cssText = `box-sizing: border-box;
   border: 1px solid black; width: calc(100% / ${rows}); height: calc(100% / ${rows});`;
-  console.log(gridRules);
 };
 
-let rows = 10;
+const addSquares = function () {
+  const squares = document.querySelectorAll(".grid");
+  squares.forEach((square) =>
+    square.addEventListener("mouseenter", () => {
+      console.log("hello");
+    })
+  );
+};
 
 const createDiv = function () {
   let squares = rows * rows;
@@ -33,7 +39,7 @@ const createDiv = function () {
     div.classList = "grid";
     gridContainer.appendChild(div);
   }
+  addSquares();
 };
-// gridContainer.appendChild()
 
 document.querySelector("#reset").addEventListener("click", createDiv);
