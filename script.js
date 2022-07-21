@@ -13,9 +13,8 @@ css grid width/height calculation is then changed to a
 */
 const gridContainer = document.querySelector(".grid-container");
 
-const styleSheet = document.querySelector("#stylesheet");
-const sheet = document.styleSheets[0];
-const gridRules = sheet.cssRules[4];
+// const styleSheet = document.querySelector("#stylesheet");
+const gridRules = document.styleSheets[0].cssRules[4];
 
 const gridSize = function () {
   gridRules.style.cssText = `box-sizing: border-box;
