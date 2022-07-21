@@ -49,6 +49,18 @@ const clearGrid = function () {
     square.style.backgroundColor = "";
   });
 };
-createDiv();
 
+const resize = function () {
+  let input = prompt("How many rows would you like?", Number());
+  rows = +input;
+  gridContainer.innerHTML = "";
+  createDiv();
+};
+
+//functionality for reset button
 document.querySelector("#reset").addEventListener("click", clearGrid);
+
+//functionality for resize button
+document.querySelector("#resize").addEventListener("click", resize);
+
+createDiv();
