@@ -9,14 +9,15 @@ p {
   margin: 0;
 }
 .grid-container {
-  width: 400px;
-  height: 400px;
+  width: 600px;
+  height: 600px;
   background-color: aqua;
-  margin: 50px auto;
+  margin: 30px auto;
   display: flex;
   flex-wrap: wrap;
   border: 2px solid black;
 }
+
 .grid {
   box-sizing: border-box;
   border: 1px solid black;
@@ -28,8 +29,6 @@ p {
 }
 
 #grid-size {
-  width: 30px;
-  height: 30px;
-  border: 1px solid black;
-  line-height: 30px;
+  margin: 0;
+  /* border: 1px solid black; */
 }
