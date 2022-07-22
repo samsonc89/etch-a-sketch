@@ -22,13 +22,9 @@ const randomColorGenerator = function () {
     "#" + Math.floor(Math.random() * 16777215).toString(16));
 };
 
-userColor.onchange = (e) => {
-  console.log(e.target.value);
-};
-
 let rows = 10;
 
-let currentColor = "#000000";
+let currentColor = "#808080";
 
 //functions
 const gridSize = function () {
@@ -93,8 +89,6 @@ const resize = function () {
   gridText.textContent = `${rows} x ${rows}`;
 };
 
-const rainbowGenerator = function () {};
-
 //functionality for buttons
 //reset button
 document.querySelector("#reset").addEventListener("click", clearGrid);
@@ -120,6 +114,10 @@ document.querySelector("#black").addEventListener("click", () => {
 });
 
 //functionality for color picker
+document.querySelector("#color").addEventListener("change", (e) => {
+  let input = e.target.value;
+  addColor(input);
+});
 
 /*
 
