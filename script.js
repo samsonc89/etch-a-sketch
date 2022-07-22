@@ -13,8 +13,16 @@ css grid width/height calculation is then changed to a
 */
 const gridContainer = document.querySelector(".grid-container");
 const gridRules = document.styleSheets[0].cssRules[4];
+const userColor = document.querySelector("#color");
+const gridText = document.querySelector("#grid-size");
+
+userColor.onchange = (e) => {
+  console.log(e.target.value);
+};
 
 let rows = 10;
+
+let currentColor = "rgb(0, 0, 0)";
 
 const gridSize = function () {
   gridRules.style.cssText = `box-sizing: border-box;
@@ -25,7 +33,7 @@ const addSquares = function () {
   const squares = document.querySelectorAll(".grid");
   squares.forEach((square) =>
     square.addEventListener("mouseenter", () => {
-      square.style.backgroundColor = "black";
+      square.style.backgroundColor = `${currentColor}`;
     })
   );
 };
@@ -43,6 +51,7 @@ const createDiv = function () {
   addSquares();
 };
 
+createDiv();
 const clearGrid = function () {
   const squares = document.querySelectorAll(".grid");
   squares.forEach((square) => {
@@ -50,11 +59,18 @@ const clearGrid = function () {
   });
 };
 
+function removeAllChildNodes(parent) {
+  while (parent.firstChild) {
+    parent.removeChild(parent.firstChild);
+  }
+}
+
 const resize = function () {
+  removeAllChildNodes(gridContainer);
   let input = prompt("How many rows would you like?", Number());
   rows = +input;
-  gridContainer.innerHTML = "";
   createDiv();
+  gridText.textContent = `${rows} x ${rows}`;
 };
 
 //functionality for reset button
@@ -63,4 +79,13 @@ document.querySelector("#reset").addEventListener("click", clearGrid);
 //functionality for resize button
 document.querySelector("#resize").addEventListener("click", resize);
 
-createDiv();
+//functionality for color picker
+
+/*
+
+each color button changes a state
+the state modifies which color
+
+user
+
+*/
