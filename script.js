@@ -1,16 +1,5 @@
 "use strict";
-/*
 
-User picks a number a
-
-number is then passed to formula to find out how many
-squares to add (a x a)
-
-after divs are made select ALL of them and add class list with loop
-
-css grid width/height calculation is then changed to a
-
-*/
 //declarations
 const gridContainer = document.querySelector(".grid-container");
 const gridRules = document.styleSheets[0].cssRules[4];
@@ -65,11 +54,6 @@ const createDiv = function () {
 createDiv();
 addColor();
 blackBtn.classList.add("selected");
-/*
-SET state to black
-nned to change the state for when rainbow is selected. when resizing, it goes to last color
-currentColor = currentState
-*/
 
 const clearGrid = function () {
   const squares = document.querySelectorAll(".grid");
@@ -126,12 +110,3 @@ document.querySelector(".color-area").addEventListener("change", (e) => {
   blackBtn.classList.remove("selected");
   colorBtn.forEach((btn) => btn.classList.add("selected"));
 });
-
-/*
-
-each color button changes a state
-the state modifies which color is current
-
-user
-
-*/
