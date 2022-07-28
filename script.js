@@ -16,15 +16,18 @@ const gridContainer = document.querySelector(".grid-container");
 const gridRules = document.styleSheets[0].cssRules[4];
 const userColor = document.querySelector("#color");
 const gridText = document.querySelector("#grid-size");
+const rainbowBtn = document.querySelector("#rainbow-picker");
+const blackBtn = document.querySelector("#black");
+const colorBtn = document.querySelectorAll("#color, label, .color-area");
+
 let randomColor;
 const randomColorGenerator = function () {
   return (randomColor =
     "#" + Math.floor(Math.random() * 16777215).toString(16));
 };
 
-let rows = 10;
-
-let currentColor = "#808080";
+let rows = 16;
+let currentState = "#000000";
 
 //functions
 const gridSize = function () {
@@ -34,9 +37,14 @@ const gridSize = function () {
 
 const addColor = function (color = "#000000") {
   const squares = document.querySelectorAll(".grid");
+  let currentColor;
   squares.forEach((square) =>
     square.addEventListener("mouseenter", () => {
-      currentColor = color;
+      if (currentState == "random") {
+        currentColor = randomColorGenerator();
+      } else {
+        currentColor = currentState;
+      }
       square.style.backgroundColor = `${currentColor}`;
     })
   );
@@ -52,21 +60,16 @@ const createDiv = function () {
     div.classList = "grid";
     gridContainer.appendChild(div);
   }
-  addColor();
 };
 
 createDiv();
-
-// const state = function (color) {
-//     //changes color based on input
-//     currentColor = color;
-//     const squares = document.querySelectorAll(".grid");
-//   squares.forEach((square) =>
-//     square.addEventListener("mouseenter", () => {
-//       square.style.backgroundColor = `${currentColor}`;
-//     })
-//   );
-// };
+addColor();
+blackBtn.classList.add("selected");
+/*
+SET state to black
+nned to change the state for when rainbow is selected. when resizing, it goes to last color
+currentColor = currentState
+*/
 
 const clearGrid = function () {
   const squares = document.querySelectorAll(".grid");
@@ -84,9 +87,14 @@ function removeAllChildNodes(parent) {
 const resize = function () {
   removeAllChildNodes(gridContainer);
   let input = prompt("How many rows would you like?", Number());
-  rows = +input;
-  createDiv();
-  gridText.textContent = `${rows} x ${rows}`;
+  if (input <= 0 || input > 100) {
+    alert("Not a valid size. You have broken the page!");
+  } else {
+    rows = +input;
+    createDiv();
+    addColor();
+    gridText.textContent = `${rows} x ${rows}`;
+  }
 };
 
 //functionality for buttons
@@ -97,26 +105,26 @@ document.querySelector("#reset").addEventListener("click", clearGrid);
 document.querySelector("#resize").addEventListener("click", resize);
 
 //rainbow
-document.querySelector("#rainbow-picker").addEventListener("click", () => {
-  const squares = document.querySelectorAll(".grid");
-  squares.forEach((square) =>
-    square.addEventListener("mouseenter", () => {
-      randomColorGenerator();
-      currentColor = randomColor;
-      square.style.backgroundColor = `${currentColor}`;
-      console.log(randomColor);
-    })
-  );
+rainbowBtn.addEventListener("click", () => {
+  currentState = "random";
+  blackBtn.classList.remove("selected");
+  colorBtn.forEach((btn) => btn.classList.remove("selected"));
+  rainbowBtn.classList.add("selected");
 });
 
-document.querySelector("#black").addEventListener("click", () => {
-  addColor();
+blackBtn.addEventListener("click", () => {
+  currentState = "#000000";
+  rainbowBtn.classList.remove("selected");
+  colorBtn.forEach((btn) => btn.classList.remove("selected"));
+  blackBtn.classList.add("selected");
 });
 
 //functionality for color picker
-document.querySelector("#color").addEventListener("change", (e) => {
-  let input = e.target.value;
-  addColor(input);
+document.querySelector(".color-area").addEventListener("change", (e) => {
+  currentState = e.target.value;
+  rainbowBtn.classList.remove("selected");
+  blackBtn.classList.remove("selected");
+  colorBtn.forEach((btn) => btn.classList.add("selected"));
 });
 
 /*

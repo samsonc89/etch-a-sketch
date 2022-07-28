@@ -7,22 +7,24 @@
     <script src="./script.js" defer></script>
   </head>
   <body>
-    <h1>Etch a Sketch</h1>
-    <div class="button-area">
-      <button id="black">Black</button>
-      <div class="color-area">
-        <input type="color" id="color" name="color" value="#808080" />
-        <label for="color">Pick</label>
+    <div class="wrapper">
+      <h1>Etch a Sketch</h1>
+      <div class="button-area">
+        <button id="black">Black</button>
+        <div class="color-area">
+          <input type="color" id="color" name="color" value="#000000" />
+          <label for="color">Pick</label>
+        </div>
+        <button id="rainbow-picker">Rainbow</button>
+        <div class="size-slider">
+          <button id="resize">Resize</button>
+        </div>
+        <button id="reset">Reset</button>
       </div>
-      <button id="rainbow-picker">Rainbow</button>
-      <div class="size-slider">
-        <button id="resize">Resize</button>
+      <h3 id="grid-size">10 x 10</h3>
+      <div class="grid-area">
+        <div class="grid-container"></div>
       </div>
-      <button id="reset">Reset</button>
-    </div>
-    <h3 id="grid-size">10 x 10</h3>
-    <div class="grid-area">
-      <div class="grid-container"></div>
     </div>
   </body>
 </html>
